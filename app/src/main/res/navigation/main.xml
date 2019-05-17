@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:startDestination="@id/ratesFragment">
+
+    <fragment
+        android:id="@+id/ratesFragment"
+        android:name="eu.europa.ecb.ui.rates.ExchangeRatesFragment"
+        android:label="ExchangeRatesFragment">
+        <action
+            android:id="@+id/show"
+            app:destination="@id/animatedFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/animatedFragment"
+        android:name="eu.europa.ecb.ui.animation.AnimatedFragment"
+        android:label="AnimatedFragment"/>
+</navigation>

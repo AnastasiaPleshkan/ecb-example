@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="eu.europa.ecb.vo.Envelope" />
+
+        <import type="java.util.List" />
+
+        <import type="eu.europa.ecb.vo.Status" />
+
+        <import type="eu.europa.ecb.vo.Resource" />
+
+        <import type="androidx.lifecycle.LiveData" />
+
+        <variable name="result" type="LiveData&lt;String>" />
+        <variable name="currency" type="String" />
+        <variable name="updated" type="String" />
+        <variable
+            name="searchResult"
+            type="LiveData&lt;Resource&lt;List&lt;eu.europa.ecb.vo.CubeItem>>>" />
+
+        <variable
+            name="callback"
+            type="eu.europa.ecb.ui.common.ClickCallback" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            style="@style/TextAppearance.AppCompat.Small"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:padding="@dimen/default_margin"
+            android:text="@{updated}"
+            tools:text="2019-05-05" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:padding="@dimen/default_margin">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rate_in_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layoutManager="LinearLayoutManager"
+                tools:listitem="@layout/cube_item_item" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="vertical"
+                android:padding="@dimen/big_margin">
+
+                <TextView
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintWidth_percent="0.25"
+                    app:layout_constraintBottom_toBottomOf="@id/textInputLayout3"
+                    android:id="@+id/curr_text"
+                    android:gravity="right"
+                    android:paddingRight="@dimen/default_margin"
+                    style="@style/TextAppearance.AppCompat.Large"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@{currency}"
+                    tools:text="RUB" />
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputLayout3"
+                    app:layout_constraintWidth_percent="0.5"
+                    android:orientation="horizontal"
+                    android:layout_width="0dp"
+                    app:layout_constraintStart_toEndOf="@id/curr_text"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/default_margin">
+
+                    <eu.europa.ecb.ui.common.NumberDecimalInput
+                        android:id="@+id/input"
+                        android:inputType="numberDecimal"
+                        style="@style/TextAppearance.AppCompat.Large"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/amount_hint"
+                        android:imeOptions="actionDone"
+                        tools:text="0.00" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    app:layout_constraintLeft_toLeftOf="@id/textInputLayout3"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/textInputLayout3"
+                    android:id="@+id/result_text"
+                    style="@style/TextAppearance.AppCompat.Large"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="@{result}"
+                    tools:text="0.00 RUB" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rate_out_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+
+                app:layoutManager="LinearLayoutManager"
+                tools:listitem="@layout/cube_item_item" />
+        </LinearLayout>
+
+<!--
+        <include
+            layout="@layout/loading_state"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            app:callback="@{() -> callback.click()}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:resource="@{(Resource) searchResult}" />
+-->
+
+        <Button
+            android:layout_width="wrap_content"
+            android:onClick="@{() -> callback.click()}"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginBottom="@dimen/default_margin"
+            android:text="@string/animation"/>
+    </FrameLayout>
+</layout>

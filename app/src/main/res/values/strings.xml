@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">ECB</string>
+    <string name="retry">Retry</string>
+    <string name="unknown_error">Unknown Error</string>
+    <string name="amount_hint">Enter amount</string>
+    <string name="animation">Animation</string>
+</resources>
