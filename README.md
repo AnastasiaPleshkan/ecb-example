@@ -1,4 +1,4 @@
-Sample with Android Architecture Components
+Сurrencies converter sample base on data from https://www.ecb.europa.eu/stats/html/index.en.html with Android Architecture Components
 ===========================================================
 Euro foreign exchange reference rates
 The reference rates are usually updated around 16:00 CET on every working day, except on TARGET closing days. They are based on a regular daily concertation procedure between central banks across Europe, which normally takes place at 14:15 CET. 
@@ -31,6 +31,7 @@ The project uses [MockWebServer][mockwebserver] project to test REST api interac
 * [Retrofit][retrofit] for REST api communication
 * [Timber][timber] for logging
 * [mockito][mockito] for mocking in tests
+* [worker][worker] for executing tasks in background 
 
 
 [mockwebserver]: https://github.com/square/okhttp/tree/master/mockwebserver
@@ -41,3 +42,4 @@ The project uses [MockWebServer][mockwebserver] project to test REST api interac
 [retrofit]: http://square.github.io/retrofit
 [timber]: https://github.com/JakeWharton/timber
 [mockito]: http://site.mockito.org
+[worker]: https://developer.android.com/topic/libraries/architecture/workmanager/basics
